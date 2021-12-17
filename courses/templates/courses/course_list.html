@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+    {% for course in courses %}
+    <div>
+        <a href="{% url 'update-course' course.id %}">Edit</a>
+        <a href="{% url 'delete-course' course.id %}">Delete</a>
+        <p>{{course.id}}. {{course.name}} -- <b>{{course.department}}</b></p>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}

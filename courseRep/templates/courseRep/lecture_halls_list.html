@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+    <p><a href="{% url 'bookHall' %}">Book Lecture Hall</a></p>
+
+    <p>View all the list of Lecture Halls</p><a href="{% url 'allClassList' %}">View</a>
+</div>
+<p> </p><br>
+
+<div>
+
+    {% for room in rooms %}
+
+        {% if room.complete %}
+            <a href="{% url 'student-info' room.id %}" 
+            title="View student who booked the lecture hall">View Student</a>
+            <s><p>{{room.class_rooms}}</p></s>
+
+        {% else %} 
+            <a href="{% url 'student-info' room.id %}" 
+            title="View student who booked the lecture hall">View Student</a>
+            <span><p>{{room.class_rooms}}</p></span>
+        
+        
+        {% endif %} 
+    {% endfor %}
+    <i>Note:</i>
+    <p>The unstriked classes are yet to be confirmed.</p>
+    <p><b>There are {{roomCount}} lecture halls in use.</b></p>
+</div>
+
+{% endblock %}
+
+

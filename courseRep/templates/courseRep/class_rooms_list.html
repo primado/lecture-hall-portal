@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<p><a href="{{request.META.HTTP_REFERER}}">GO BACK</a></p>
+<p>List of Lecture Halls.</p>
+    {% for class_room in class_rooms %}
+    <div>
+        <p>{{class_room.name}}</p>
+    </div>
+    {% endfor %}
+
+{% endblock %}

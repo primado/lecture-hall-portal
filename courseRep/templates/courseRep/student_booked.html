@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<p><a href="{{request.META.HTTP_REFERER}}">GO BACK</a></p>
+
+<div>
+
+    <div>
+        <h1>Student Info</h1>
+        <p> </p>
+
+        <h3>Name of Student</h3>
+        <p>{{students.first_name}} {{students.last_name}}</p>
+        <p> </p>
+
+        <h3>Gender</h3>
+        <p>{{students.gender}}</p>
+        <p> </p>
+
+        <h3>Department of Student</h3>
+        <p>{{students.department}}</p>
+        <p> </p>
+
+        <h3>Lecture Hall Booked</h3>
+        <p>{{students.class_rooms}}</p>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

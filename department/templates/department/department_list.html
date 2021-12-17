@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+    <p>Department List</p>
+    {% for department in departments %}
+        <div>
+            <p>{{department.id}}. {{department.name}}</p>
+        </div>
+
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
