@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.utils import timezone
+import datetime
 
 from department.models import Department
 from courses.models import Course
@@ -154,10 +156,15 @@ def updateBookHall(request, pk):
 def classRooms(request):
     rooms = BookLectureHall.objects.all()  
     
-    roomCount = rooms.filter(complete=True).count()  
+    roomCount = rooms.filter(complete=True).count() 
+    
+    unstrike = timezone.now()
+        
+     
     context = {
         'rooms': rooms,
         'roomCount': roomCount,
+        'unstrike': unstrike,
     }
 
     return render(request, 'courseRep/lecture_halls_list.html', context)

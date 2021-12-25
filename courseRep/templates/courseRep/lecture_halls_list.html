@@ -13,18 +13,26 @@
 
     {% for room in rooms %}
 
+        
         {% if room.complete %}
+    
             <a href="{% url 'student-info' room.id %}" 
             title="View student who booked the lecture hall">View Student</a>
             <s><p>{{room.class_rooms}}</p></s>
+
+        
+        {% elif room.created_at > unstrike %}
+            <span><p>{{room.class_rooms}}</p></span>
 
         {% else %} 
             <a href="{% url 'student-info' room.id %}" 
             title="View student who booked the lecture hall">View Student</a>
             <span><p>{{room.class_rooms}}</p></span>
-        
+
         
         {% endif %} 
+
+
     {% endfor %}
     <i>Note:</i>
     <p>The unstriked classes are yet to be confirmed.</p>
