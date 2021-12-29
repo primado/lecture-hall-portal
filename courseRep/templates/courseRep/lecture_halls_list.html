@@ -13,7 +13,7 @@
 
     {% for room in rooms %}
 
-        
+    {% comment %}
         {% if room.complete %}
     
             <a href="{% url 'student-info' room.id %}" 
@@ -25,15 +25,16 @@
             <span><p>{{room.class_rooms}}</p></span>
 
         {% else %} 
+    {% endcomment %}
             <a href="{% url 'student-info' room.id %}" 
             title="View student who booked the lecture hall">View Student</a>
             <span><p>{{room.class_rooms}}</p></span>
 
         
-        {% endif %} 
+       {# {% endif %} #}
 
 
-    {% endfor %}
+    {# {% endfor %} #}
     <i>Note:</i>
     <p>The unstriked classes are yet to be confirmed.</p>
     <p><b>There are {{roomCount}} lecture halls in use.</b></p>

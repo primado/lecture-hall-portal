@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.utils import timezone
-import datetime
+from datetime import datetime, timedelta
 
 from department.models import Department
 from courses.models import Course
@@ -154,8 +154,8 @@ def updateBookHall(request, pk):
 
 
 def classRooms(request):
-    rooms = BookLectureHall.objects.all()  
-    
+    # rooms = BookLectureHall.objects.all()
+    rooms = BookHallForm.objects.filter(created_at__lte=datetime.now() - timedelta(seconds=60*60*24))   # booking period is 24hrs ( 1st 60 in minutes, 2nd 60 in hrs, 24 is 24hrs)
     roomCount = rooms.filter(complete=True).count() 
     
     unstrike = timezone.now()
