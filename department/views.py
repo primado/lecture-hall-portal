@@ -154,15 +154,16 @@ def updateBookHall(request, pk):
 
 
 def classRooms(request):
-    # rooms = BookLectureHall.objects.all()
-    rooms = BookHallForm.objects.filter(created_at__lte=datetime.now() - timedelta(seconds=60*60*24))   # booking period is 24hrs ( 1st 60 in minutes, 2nd 60 in hrs, 24 is 24hrs)
+    rooms = BookLectureHall.objects.all()
+    # rooms = BookLectureHall.objects.filter(created_at__lte=datetime.now() - timedelta(seconds=60*60*24)).delete()   # booking period is 24hrs ( 1st 60 in minutes, 2nd 60 in hrs, 24 is 24hrs)
+    term = rooms.filter(created_at__lte=datetime.now() - timedelta(seconds=60*60*12)).delete()
     roomCount = rooms.filter(complete=True).count() 
-    
+     
     unstrike = timezone.now()
         
      
     context = {
-        'rooms': rooms,
+        'term': term,
         'roomCount': roomCount,
         'unstrike': unstrike,
     }

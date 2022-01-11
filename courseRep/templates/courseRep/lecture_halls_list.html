@@ -11,30 +11,29 @@
 
 <div>
 
-    {% for room in rooms %}
+{% for room in rooms %}
 
     {% comment %}
         {% if room.complete %}
     
             <a href="{% url 'student-info' room.id %}" 
             title="View student who booked the lecture hall">View Student</a>
-            <s><p>{{room.class_rooms}}</p></s>
+            <s><p>{{room.class_rooms}} {{room.created_at|timesince}}</p></s>
 
         
         {% elif room.created_at > unstrike %}
-            <span><p>{{room.class_rooms}}</p></span>
+            <span><p>{{room.class_rooms}} {{room.created_at|timesince}}</p></span>
 
         {% else %} 
+
+       
     {% endcomment %}
             <a href="{% url 'student-info' room.id %}" 
             title="View student who booked the lecture hall">View Student</a>
-            <span><p>{{room.class_rooms}}</p></span>
-
-        
-       {# {% endif %} #}
+            <span><p>{{room.class_rooms}} {{room.created_at|timesince}}</p></span>
 
 
-    {# {% endfor %} #}
+{% endfor %}
     <i>Note:</i>
     <p>The unstriked classes are yet to be confirmed.</p>
     <p><b>There are {{roomCount}} lecture halls in use.</b></p>
